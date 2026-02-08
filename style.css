@@ -1,0 +1,503 @@
+/* CSS Variables */
+:root {
+    /* Light Mode (Default) */
+    --bg-color: #f7f9fc;
+    --text-color: #2d3436;
+    --text-secondary: #636e72;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --primary-color: #6366f1;
+    /* Modern Indigo */
+    --primary-hover: #4f46e5;
+    --secondary-bg: #e2e8f0;
+    --secondary-hover: #cbd5e1;
+    --border-color: #e5e7eb;
+    --nav-height: 70px;
+    --transition-speed: 0.3s;
+    --font-family: 'Outfit', sans-serif;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    /* Deep Slate */
+    --text-color: #f8fafc;
+    /* Create variable so user can easily change */
+    --text-secondary: #94a3b8;
+    --card-bg: #1e293b;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --primary-color: #818cf8;
+    /* Lighter Indigo for dark mode */
+    --primary-hover: #6366f1;
+    --secondary-bg: #334155;
+    --secondary-hover: #475569;
+    --border-color: #334155;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(15, 23, 42, 0.9);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Navigation Controls (Right Side) */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Space between Portfolio Btn and Toggle */
+}
+
+/* Portfolio Button Style */
+.nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    /* Thicker text */
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    /* Thicker border */
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+    /* Ensure no underline */
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--secondary-bg);
+}
+
+/* Header / Hero Section */
+.hero {
+    padding: 1.5rem 0 2rem;
+    /* Reduced top padding to move closer to navbar */
+    text-align: center;
+}
+
+.hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+    /* Reduced margin to pull title up */
+}
+
+.role-title {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    color: var(--text-color);
+    line-height: 1.1;
+}
+
+.at-company {
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 0;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* Hero List Styling */
+/* Hero List Styling */
+.hero-description-list {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    list-style-type: disc;
+    /* Use bullets */
+    list-style-position: inside;
+    /* Keep bullets with text for centered layout */
+    text-align: justify;
+    /* Changed to justify */
+    /* Text content is left aligned */
+    display: inline-block;
+    /* Allows list to be centered in parent, but items left aligned */
+}
+
+.hero-description-list li {
+    margin-bottom: 0.1rem;
+}
+
+/* Desktop Alignment: Move everything to left */
+@media (min-width: 992px) {
+    .hero {
+        text-align: left;
+    }
+
+    .hero-content-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        /* Align items to top */
+        gap: 4rem;
+        /* Spacing between columns */
+    }
+
+    .hero-left {
+        flex: 0 0 auto;
+        /* Do not grow/shrink, verify width */
+        width: 40%;
+        text-align: center;
+        /* Center text within the left column */
+    }
+
+    .hero-right {
+        flex: 1;
+        max-width: 60%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .hero-description-list {
+        margin: 0;
+        padding-left: 1.2rem;
+        display: block;
+        list-style-position: outside;
+        text-align: justify;
+        /* Changed to justify */
+    }
+
+    .hero-description-list li {
+        white-space: nowrap;
+        /* Force text to stay on one line */
+    }
+}
+
+/* Tasks Section */
+.tasks-section {
+    padding: 1rem 0 4rem;
+    /* Reduced top padding */
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    display: block;
+    /* Changed to block to ensure centering works in non-centered parents */
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+.tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /* Mobile layout: 1 column */
+    gap: 2rem;
+}
+
+/* Response Breakpoint for Desktop */
+@media (min-width: 992px) {
+    .tasks-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Desktop layout: 3 columns */
+    }
+}
+
+/* Task Card */
+.task-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    border: 1px solid transparent;
+    /* Add transparent border to prevent layout shift */
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+    /* Highlight border on hover */
+}
+
+[data-theme="dark"] .task-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--secondary-bg);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.task-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.task-title {
+    font-size: 1.15rem;
+    /* Reduced font size */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.task-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    /* Pushes buttons to bottom */
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    /* Handle smaller screens gracefully */
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    text-decoration: none;
+    flex: 1;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-bg);
+}
+
+/* About Section */
+.about-section {
+    background-color: var(--card-bg);
+    /* Use card-bg (likely lighter/darker than body) or just plain body bg? Let's differentiate lightly or keep clean. */
+    padding: 4rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    /* Justify text as requested */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    background-color: var(--bg-color);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Stagger animation for cards */
+.task-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.task-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.task-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .role-title {
+        font-size: 2rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
